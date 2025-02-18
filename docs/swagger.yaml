@@ -1,0 +1,499 @@
+definitions:
+  api.Response:
+    properties:
+      code:
+        description: 状态码
+        example: 200
+        type: integer
+      data:
+        description: 数据
+      message:
+        description: 消息
+        example: Success
+        type: string
+      status:
+        description: 状态
+        type: boolean
+    type: object
+  form.FeedAddForm:
+    properties:
+      public:
+        type: boolean
+      toLang:
+        type: string
+      translateDescription:
+        type: boolean
+      translateTitle:
+        type: boolean
+      translatorID:
+        type: integer
+      url:
+        type: string
+    type: object
+  form.FeedUpdateForm:
+    properties:
+      description:
+        type: string
+      fromLang:
+        type: string
+      id:
+        type: integer
+      logo:
+        type: string
+      public:
+        type: boolean
+      title:
+        type: string
+      toLang:
+        type: string
+      translateDescription:
+        type: boolean
+      translateTitle:
+        type: boolean
+      translatorId:
+        type: integer
+      url:
+        type: string
+    type: object
+  form.TranslatorAddForm:
+    properties:
+      key:
+        type: string
+      lang:
+        type: string
+      name:
+        type: string
+      prompt:
+        type: string
+      role:
+        type: string
+      url:
+        type: string
+    type: object
+  form.TranslatorUpdateForm:
+    properties:
+      id:
+        type: integer
+      key:
+        type: string
+      lang:
+        type: string
+      name:
+        type: string
+      prompt:
+        type: string
+      role:
+        type: string
+      url:
+        type: string
+    type: object
+  form.UserLoginForm:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  form.UserRegisterForm:
+    properties:
+      admin:
+        type: boolean
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  form.UserUpdateForm:
+    properties:
+      password:
+        type: string
+      passwordOld:
+        type: string
+    type: object
+host: localhost:8090
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a sample server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Swagger Example API
+  version: "1.0"
+paths:
+  /api/v1/feed/add:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: FeedAddForm
+        in: body
+        name: feedAddForm
+        required: true
+        schema:
+          $ref: '#/definitions/form.FeedAddForm'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: add feed
+      tags:
+      - feed
+  /api/v1/feed/all/{userid}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: userid
+        in: path
+        name: userid
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: get feed
+      tags:
+      - feed
+  /api/v1/feed/delete/{id}:
+    get:
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: delete feed
+      tags:
+      - feed
+  /api/v1/feed/get/{id}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: get feed
+      tags:
+      - feed
+  /api/v1/feed/pagination:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        name: keyword
+        type: string
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        name: page
+        type: integer
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: get feed
+      tags:
+      - feed
+  /api/v1/feed/public/pagination:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - in: query
+        name: keyword
+        type: string
+      - in: query
+        name: limit
+        type: integer
+      - in: query
+        name: page
+        type: integer
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: get feed
+      tags:
+      - feed
+  /api/v1/feed/refresh/{id}:
+    get:
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: add feed
+      tags:
+      - feed
+  /api/v1/feed/update:
+    get:
+      parameters:
+      - description: 数据
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/form.FeedUpdateForm'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: add feed
+      tags:
+      - feed
+  /api/v1/translator/add:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: TranslatorAddForm
+        in: body
+        name: translatorAddForm
+        required: true
+        schema:
+          $ref: '#/definitions/form.TranslatorAddForm'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: add translator
+      tags:
+      - translator
+  /api/v1/translator/all:
+    get:
+      consumes:
+      - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: get translator
+      tags:
+      - translator
+  /api/v1/translator/delete/{id}:
+    get:
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: delete translator
+      tags:
+      - translator
+  /api/v1/translator/feeds/{id}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: id
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: get translator
+      tags:
+      - translator
+  /api/v1/translator/get/{id}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: get translator
+      tags:
+      - translator
+  /api/v1/translator/update:
+    post:
+      parameters:
+      - description: 数据
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/form.TranslatorUpdateForm'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: add translator
+      tags:
+      - translator
+  /api/v1/user/delete/{id}:
+    get:
+      description: delete user
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: delete user
+      tags:
+      - user
+  /api/v1/user/info:
+    get:
+      consumes:
+      - application/json
+      description: get user
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: get user
+      tags:
+      - user
+  /api/v1/user/login:
+    post:
+      parameters:
+      - description: UserLoginForm
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/form.UserLoginForm'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: user login
+      tags:
+      - user
+  /api/v1/user/logout:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: user login
+      tags:
+      - user
+  /api/v1/user/register:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: UserRegisterForm
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/form.UserRegisterForm'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: register user
+      tags:
+      - user
+  /api/v1/user/update:
+    post:
+      description: add user
+      parameters:
+      - description: data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/form.UserUpdateForm'
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.Response'
+      summary: add user
+      tags:
+      - user
+  /feed/rss/{id}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      responses:
+        "200":
+          description: feed
+      summary: get feed
+      tags:
+      - feed
+securityDefinitions:
+  JWT:
+    description: |-
+      Bearer Token 格式：`Bearer {token}`
+      JWT Authorization header
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
