@@ -57,7 +57,7 @@ transfeed -h
 
 ## 部署
 
-如果使用`Nginx`转发，必须设置路由前缀`url-prefix`，例如前端访问地址在`http:///www.域名.com/transfeed`，nginx配置设置如下
+如果使用`Nginx`转发，必须设置路由前缀`url-prefix`，例如前端访问地址在`http://www.server.com/transfeed`，nginx配置设置如下
 
 ```text
 location ~ ^/transfeed/(.*)$ {
@@ -71,7 +71,7 @@ location ~ ^/transfeed/(.*)$ {
 
 
 
-同时必须设置`url-prefix`为
+同时设置`url-prefix`为
 
 ```bash
 transfeed -url-prefix /transfeed
