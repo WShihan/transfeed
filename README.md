@@ -81,7 +81,7 @@ transfeed -url-prefix /transfeed
 
 
 
-Transfeed，为前后端分开，支持自己编写个性化的前端应用，接口部分请查看`swagger`文档。
+该项目支持自己编写个性化的前端应用，接口部分请查看`swagger`文档。
 
 
 
