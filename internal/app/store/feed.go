@@ -103,7 +103,6 @@ func CreateFeed(feedAddForm form.FeedAddForm) (*model.Feed, error) {
 			Title:   item.Title,
 			Link:    item.Link,
 			Summary: item.Description,
-			Author:  item.Author.Name,
 		}
 		if item.Author != nil {
 			entry.Author = item.Author.Name

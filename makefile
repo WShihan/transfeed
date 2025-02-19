@@ -1,6 +1,6 @@
 BINARY_NAME = transfeed
 BUILD_DIR = build
-VERSION = 0.0.1
+VERSION = 0.0.1-alpha
 OPTIONS = CGO_ENABLED=0
 COMMIT = $(shell git rev-parse HEAD)
 BUILD_TIME = $(shell date +%Y-%m-%dT%H:%M:%S)

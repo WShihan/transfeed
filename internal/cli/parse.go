@@ -38,6 +38,5 @@ func Parse(injection Injection) {
 	util.InitLogger()
 	store.InitDB(*dataBaseURL)
 	store.InitAdmin(*adminName, *adminPassword)
-	store.ResetUser(*adminName, *adminPassword)
 	server.RunServer(&cfg)
 }
