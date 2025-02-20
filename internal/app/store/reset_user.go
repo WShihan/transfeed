@@ -1,6 +1,7 @@
 package store
 
 import (
+	"fmt"
 	"transfeed/internal/app/model"
 	"transfeed/internal/util"
 )
@@ -14,5 +15,11 @@ func ResetUser(username string, password string) error {
 		return err
 	}
 	user.Password = hashedPass
-	return DB.Save(&user).Error
+	err = DB.Save(&user).Error
+	if err != nil {
+		fmt.Printf("reset user error:%s\n", err.Error())
+	} else {
+		fmt.Printf("reset user %s success\n", username)
+	}
+	return err
 }

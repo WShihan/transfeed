@@ -27,7 +27,7 @@ var (
 // @name Authorization
 // @description JWT Authorization header
 func main() {
-	cli.Parse(cli.Injection{
+	cli.Execute(&cli.Injection{
 		Version:   Version,
 		BuildTime: BuildTime,
 		Commit:    Commit,
