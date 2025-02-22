@@ -18,8 +18,11 @@ func ResetUser(username string, password string) error {
 	err = DB.Save(&user).Error
 	if err != nil {
 		fmt.Printf("reset user error:%s\n", err.Error())
-	} else {
-		fmt.Printf("reset user %s success\n", username)
 	}
+	if user.Username == "" {
+		fmt.Printf("user: %s not exist!\n", username)
+		return fmt.Errorf("user not exist")
+	}
+	fmt.Printf("reset user: %s success\n", username)
 	return err
 }

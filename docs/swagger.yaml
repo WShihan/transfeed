@@ -19,8 +19,6 @@ definitions:
     properties:
       public:
         type: boolean
-      toLang:
-        type: string
       translateDescription:
         type: boolean
       translateTitle:

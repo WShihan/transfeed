@@ -6,5 +6,4 @@ type FeedAddForm struct {
 	TranslateTitle       bool   `query:"translateTitle"`
 	TranslateDescription bool   `query:"translateDescription"`
 	Public               bool   `query:"public"`
-	ToLang               string `query:"toLang"`
 }

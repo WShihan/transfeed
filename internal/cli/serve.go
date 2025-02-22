@@ -26,7 +26,7 @@ func init() {
 	serveCmd.Flags().StringVarP(&defaultAdminPassword, "admin-password", "w", "admin1234", "default admin password")
 	serveCmd.Flags().StringVarP(&urlPrefix, "url-prefix", "u", "", "url prefix")
 	serveCmd.Flags().BoolVarP(&disableSwagger, "disable-swagger", "s", false, "disable swagger")
-	serveCmd.Flags().IntVarP(&refreshHours, "refresh-hours", "h", 4, "refresh hours")
+	serveCmd.Flags().IntVarP(&refreshHours, "refresh-hours", "t", 4, "refresh hours")
 
 	rootCmd.AddCommand(serveCmd)
 }

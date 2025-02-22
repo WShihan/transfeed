@@ -82,7 +82,7 @@ func CreateFeed(feedAddForm form.FeedAddForm) (*model.Feed, error) {
 		FromLang:             feedSrc.Language,
 		Public:               feedAddForm.Public,
 		Translator:           translator,
-		ToLang:               feedAddForm.ToLang,
+		ToLang:               translator.Lang,
 		CreateTime:           &now,
 	}
 	if feedSrc.Author != nil {

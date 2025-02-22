@@ -627,9 +627,6 @@ const docTemplate = `{
                 "public": {
                     "type": "boolean"
                 },
-                "toLang": {
-                    "type": "string"
-                },
                 "translateDescription": {
                     "type": "boolean"
                 },
