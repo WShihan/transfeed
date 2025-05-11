@@ -23,7 +23,7 @@ func RefreshFeed(feed *model.Feed) (*model.Feed, error) {
 			Guid:    item.GUID,
 			Title:   item.Title,
 			Link:    item.Link,
-			Summary: item.Description,
+			Summary: item.Content,
 			Pubdate: item.PublishedParsed,
 		}
 		err = store.DB.First(&entry, "guid = ?", item.GUID).Error
@@ -69,6 +69,7 @@ func GenFeedRss(id string) (*feeds.Feed, error) {
 			Title:       entry.Title,
 			Link:        &feeds.Link{Href: entry.Link},
 			Description: entry.Summary,
+			Content:     entry.Summary,
 			Author:      &feeds.Author{Name: entry.Author},
 			Created:     entry.CreatedAt,
 			Updated:     *entry.Pubdate,
