@@ -1,14 +1,14 @@
 Transfeed
 ===
 
-一个简单，易部署的开源RSS翻译器，前端使用`Vue`，后端使用`Go`。
+简单，易部署的开源RSS翻译器，前端使用`Vue`，后端使用`Go`。
 
 
 ## 特点
 
 - AI翻译（支持大模型）
 - 订阅源可分别设置不同翻译器
-- 多用户隔离
+- 多用户
 - 多语言
 - 易部署（仅包含一个可执行文件）
 - 数据库轻量（使用sqlite）
@@ -63,7 +63,7 @@ transfeed -h
 
 ```text
 location ~ ^/transfeed/(.*)$ {
-    proxy_pass http://127.0.0.1:8091/$1;
+    proxy_pass http://127.0.0.1:8091/$1$is_args$args;
     proxy_set_header Host            $host:$server_port;
     proxy_set_header X-Forwarded-For $remote_addr;
     proxy_set_header X-Forwarded-Proto $scheme;
@@ -76,14 +76,8 @@ location ~ ^/transfeed/(.*)$ {
 同时设置`url-prefix`为
 
 ```bash
-transfeed -url-prefix /transfeed
+transfeed serve -url-prefix /transfeed
 ```
-
-
-
-该项目支持自己编写个性化的前端应用，接口部分请查看`swagger`文档。
-
-
 
 # 说明
 
